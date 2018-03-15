@@ -7,6 +7,7 @@
 
 from fabric.api import env, run
 #from fabric.operations import sudo
+from time import sleep
 
 GIT_REPO = 'https://github.com/jackylinpda/blog_project.git'
 
@@ -23,6 +24,7 @@ def deploy():
     source_folder = '/root/django/blog_project'
 
     run('cd %s && git pull' % source_folder)
+    sleep(3)
     run("""
         cd {} &&
         ../bin/pip3.6 install -r requirements.txt &&
