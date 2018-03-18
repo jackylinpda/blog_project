@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4^jc$_&t4vdg@hh67scm6pcgyqe^wenc&&15(+%d_zq8h-d3gz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', 'jacklin.tech']
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'markdown',
     'pygments',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -117,9 +118,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'blog/whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT  = os.path.join(BASE_DIR, "blog/static")
+STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static'),]
+#STATIC_ROOT  = os.path.join(BASE_DIR, 'static')
