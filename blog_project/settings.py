@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4^jc$_&t4vdg@hh67scm6pcgyqe^wenc&&15(+%d_zq8h-d3gz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', 'jacklin.tech']
 
@@ -131,5 +131,5 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static'),]
-#STATIC_ROOT  = os.path.join(BASE_DIR, 'static')
+#STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT  = os.path.join(BASE_DIR, 'static')
